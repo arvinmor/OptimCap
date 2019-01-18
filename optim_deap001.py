@@ -22,7 +22,7 @@ import random
 
 redirect.psse2py()
 psspy.psseinit(10000)
-casestudy=(r'martin_2013_nzar.sav')  # change the address and filename to the network that you want to apply the algorithm
+casestudy=(r'network.sav')  # change the address and filename to the network that you want to apply the algorithm
 psspy.case(casestudy)   # load psse model defined by casestudy. since ardat function give areal losses we need these IDs to sum up all areal losses to find overall network loss
 ierr, areas = psspy.aareaint(-1, 1, 'NUMBER') # id of areas in the network.
 psspy.fdns(OPTIONS1=0,OPTIONS5=0,OPTIONS6=1)    # run power flow in psse model using decoupled newton method
@@ -170,7 +170,7 @@ for i in areas[0]:  # evaluating sum of losses in all areas
 ierr, vpu2 = psspy.abusreal(-1, string="PU")
 vpu02=vpu2[0]
 
-ierr = psspy.save(r'martin_2018_nzar_compensated.sav')
+ierr = psspy.save(r'network_compensated.sav')
 
 print ("Ploss before %s" %PLOSS1)
 print ("Ploss after %s" %PLOSS2)
